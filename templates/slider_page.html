@@ -1,0 +1,857 @@
+<!-- slider_page.html --> 
+
+<!-- *** ADD user-input search bar --> 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+/* Main Nav Bar */
+.topnav 
+    {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #333;
+    }
+    .topnav a 
+    {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    }
+    .topnav h1 
+    {
+    margin: 0;
+    padding: 8px 16px;
+    float: top;
+    color: white;
+    }
+    .topnav a:hover
+    {
+    background-color: #ddd;
+    color: black;
+    }
+    .topnav a.active
+    {
+    background-color: #04AA6D;
+    color: white;
+    }
+/* Rounded border */
+hr.rounded 
+            {
+            border-top: 8px solid #bbb;
+            border-radius: 5px;
+            }
+/* Dotted border */
+            hr.dotted 
+            {
+            border-top: 3px dotted #bbb;
+            }
+/* Body Style */
+            body 
+            {
+            font-family: 'Times New Roman', serif;
+            padding-top: 100px; 
+            } 
+ /* Alphabetical Nav Bar */       
+    .topnav1 
+       {
+        position: fixed;
+        top: 100px;
+        width: 100%;
+        z-index: 3000;
+
+        padding-left: 100px;
+        background-color: #04AA6D;
+        color: #333;
+         }
+        .topnav1 a 
+        {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 6px 4px;
+        text-decoration: none;
+        font-size: 12px;
+        }
+        .topnav1 a:hover
+        {
+        background-color: #ddd;
+        color: black;
+        }
+/* Create space for fixed navbar */
+        :target 
+        {
+        scroll-margin-top: 105px; /* Adjust this value based on the height of your topnav bar */
+        }
+    </style>
+</head>
+    <body>
+        <div class = "topnav">
+            <h1>Veterinary Drug Calculator </h1>
+            <a class = "active"
+            <a href="/input_page">Input Page</a>
+            <a href="/slider_page">All</a>
+            <a href="/sedation_route">Sedation </a>
+            <a href="/ER_drugs">Emergency </a>
+            <a href="#">General Injectable</a>
+            <a href="#">General Oral</a>
+        </div>
+
+        <div class="topnav1">
+            <a class="active" 
+            <a href="#A">A</a>
+            <a href="#B">B</a>
+            <a href="#C">C</a>
+            <a href="#D">D</a>
+            <a href="#E">E</a>
+            <a href="#F">F</a>
+            <a href="#G">G</a>
+            <a href="#H">H</a>
+            <a href="#I">I</a>
+            <a href="#J">J</a>
+            <a href="#K">K</a>
+            <a href="#L">L</a>
+            <a href="#M">M</a>
+            <a href="#N">N</a>
+            <a href="#O">O</a>
+            <a href="#P">P</a>
+            <a href="#Q">Q</a>
+            <a href="#R">R</a>
+            <a href="#S">S</a>
+            <a href="#T">T</a>
+            <a href="#U">U</a>   
+            <a href="#V">V</a>
+            <a href="#W">W</a>    
+            <a href="#X">X</a>
+            <a href="#Y">Y</a>
+            <a href="#Z">Z</a>
+        </div>
+
+<div style="padding-left:36px"> 
+ <!------------------------------------- STYLING ------------------------------------------------------->    
+<!------------------------------------------------------------------------------------------------------>    
+    <br>
+    
+
+    <form action="/process_slider" method="post">
+    
+<h2> All - Alphabetical </h2>
+<p>{{ result }}</p>
+
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "A">
+<h2> A </h2>
+<hr class="rounded">
+
+<!-- Acepromazine  -->
+<div id="ace_Display"> Acepromazine (10 mg/ml)</div>
+<div id="ace_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">0.01</span>
+<input type="range" id="ace_slider" name="ace_slider_value" min="0.01" max="0.05" step="0.001">
+<span style="display: inline-block; width: 50px; text-align: right;">0.05</span>
+<br>
+<div id="ace_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="ace_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var ace_slider = document.getElementById("ace_slider");
+   var ace_valDisplay = document.getElementById("ace_sliderValueDisplay");
+   var ace_dose_valDisplay = document.getElementById("ace_dose_ValueDisplay");
+   var ace_volume_valDisplay = document.getElementById("ace_volume_ValueDisplay");
+   var ace_resultValue = "{{ result }}";
+   var ace_weight = "{{ weight }}";
+   var ace_concentration = 10 ;
+
+   ace_slider.addEventListener("input", function() 
+   {
+     var ace_dynamicDose = (parseFloat(ace_slider.value) * parseFloat(ace_weight)).toFixed(6);
+     var ace_dynamicVolume = ((parseFloat(ace_slider.value) * parseFloat(ace_weight)) / ace_concentration).toFixed(6);
+     ace_valDisplay.textContent = "Dose: " + ace_slider.value  + ' mg/kg';
+     ace_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + ace_dynamicDose + 'mg </strong>');
+     ace_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + ace_dynamicVolume + 'mg/ml </strong>');
+
+   });
+</script>
+
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Alfaxalone -->
+<div id="aflax_Display"> Alfaxalone (10 mg/ml)</div>
+<div id="aflax_sliderValueDisplay">Dose: 0.00</div>
+<span style="display: inline-block; width: 50px; text-align: left;">1.0</span>
+<input type="range" id="aflax_slider" name="aflax_slider_value" min="1.0" max="2.0" step="0.1">
+<span style="display: inline-block; width: 50px; text-align: right;">2.0</span>
+<br>
+<div id="aflax_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="aflax_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var aflax_slider = document.getElementById("aflax_slider");
+   var aflax_valDisplay = document.getElementById("aflax_sliderValueDisplay");
+   var aflax_dose_valDisplay = document.getElementById("aflax_dose_ValueDisplay");
+   var aflax_volume_valDisplay = document.getElementById("aflax_volume_ValueDisplay");
+   var aflax_resultValue = "{{ result }}";
+   var aflax_weight = "{{ weight }}";
+   var aflax_concentration = 10 ;
+
+   aflax_slider.addEventListener("input", function() 
+   {
+     var aflax_dynamicDose = (parseFloat(aflax_slider.value) * parseFloat(aflax_weight)).toFixed(6);
+     var aflax_dynamicVolume = ((parseFloat(aflax_slider.value) * parseFloat(aflax_weight)) / aflax_concentration).toFixed(6);
+     aflax_valDisplay.textContent = "Dose: " + aflax_slider.value  + ' mg/kg';
+     aflax_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + aflax_dynamicDose + 'mg </strong>');
+     aflax_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + aflax_dynamicVolume + 'mg/ml </strong>');
+
+   });
+</script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Amiodarone  -->
+<div id="ami_Display"> Amiodarone (50 mg/ml)</div>
+<div id="ami_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">5.0</span>
+<input type="range" id="ami_slider" name="ami_slider_value" min="5.0" max="10.0" step="0.05">
+<span style="display: inline-block; width: 50px; text-align: right;">10.0</span>
+<br>
+<div id="ami_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="ami_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var ami_slider = document.getElementById("ami_slider");
+   var ami_valDisplay = document.getElementById("ami_sliderValueDisplay");
+   var ami_dose_valDisplay = document.getElementById("ami_dose_ValueDisplay");
+   var ami_volume_valDisplay = document.getElementById("ami_volume_ValueDisplay");
+   var ami_resultValue = "{{ result }}";
+   var ami_weight = "{{ weight }}";
+   var ami_concentration = 10 ;
+
+   ami_slider.addEventListener("input", function() 
+   {
+     var ami_dynamicDose = (parseFloat(ami_slider.value) * parseFloat(ami_weight)).toFixed(6);
+     var ami_dynamicVolume = ((parseFloat(ami_slider.value) * parseFloat(ami_weight)) / ami_concentration).toFixed(6);
+     ami_valDisplay.textContent = "Dose: " + ami_slider.value  + ' mg/kg';
+     ami_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + ami_dynamicDose + 'mg </strong>');
+     ami_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + ami_dynamicVolume + 'mg/ml </strong>');
+   });
+</script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Antisedan  -->
+<div id="anti_Display"> Antisedan (5 mg/ml) **Check dose range**</div>
+<div id="anti_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">5.0</span>
+<input type="range" id="anti_slider" name="anti_slider_value" min="5.0" max="10.0" step="0.05">
+<span style="display: inline-block; width: 50px; text-align: right;">10.0</span>
+<br>
+<div id="anti_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="anti_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var anti_slider = document.getElementById("anti_slider");
+   var anti_valDisplay = document.getElementById("anti_sliderValueDisplay");
+   var anti_dose_valDisplay = document.getElementById("anti_dose_ValueDisplay");
+   var anti_volume_valDisplay = document.getElementById("anti_volume_ValueDisplay");
+   var anti_resultValue = "{{ result }}";
+   var anti_weight = "{{ weight }}";
+   var anti_concentration = 10 ;
+
+   anti_slider.addEventListener("input", function() 
+   {
+     var anti_dynamicDose = (parseFloat(anti_slider.value) * parseFloat(anti_weight)).toFixed(6);
+     var anti_dynamicVolume = ((parseFloat(anti_slider.value) * parseFloat(anti_weight)) / anti_concentration).toFixed(6);
+     anti_valDisplay.textContent = "Dose: " + anti_slider.value  + ' mg/kg';
+     anti_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + anti_dynamicDose + 'mg </strong>');
+     anti_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + anti_dynamicVolume + 'mg/ml </strong>');
+   });
+</script>
+
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+
+<hr class="dotted">
+<!-- Apomorphine  -->
+<div id="apo_inj_Display">Apomorphine (1 mg/ml)</div>
+<div id="apo_inj_Val_Display">Dose: 0.03 mg/kg</div>
+<script>
+  var apo_inj_set_dose = 0.03;
+  var apo_inj_concentration = 1 ;
+  var apo_inj_resultValue = "{{ result }}";
+  var apo_inj_weight = "{{ weight }}";
+      var apo_inj_dose_Value = (parseFloat(apo_inj_set_dose) * parseFloat(apo_inj_weight)).toFixed(6);
+      var apo_inj_volume_Value = ((parseFloat(apo_inj_set_dose) * parseFloat(apo_inj_weight)) / apo_inj_concentration).toFixed(6);
+      document.write('<p><strong>Dosage Value: ' + apo_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + apo_inj_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Atropine -->
+<div id="arto_Display">
+    Atropine
+    <select id="arto_concentrationSelect">
+        <option value="0.54">0.54 mg/ml</option>
+        <option value="0.65">0.65 mg/ml</option>
+        <option value="1.0">1.0 mg/ml</option>
+        <option value="0.40">0.40 mg/ml</option>
+    </select>
+</div>
+<div id="arto_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">0.01</span>
+<input type="range" id="arto_slider" name="arto_slider_value" min="0.01" max="0.05" step="0.001">
+<span style="display: inline-block; width: 50px; text-align: right;">0.05</span>
+<br>
+<div id="arto_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="arto_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+
+<script>
+var arto_slider = document.getElementById("arto_slider");
+var arto_valDisplay = document.getElementById("arto_sliderValueDisplay");
+var arto_dose_valDisplay = document.getElementById("arto_dose_ValueDisplay");
+var arto_volume_valDisplay = document.getElementById("arto_volume_ValueDisplay");
+var arto_weight = "{{ weight }}";
+
+arto_slider.addEventListener("input", function() {
+    var arto_selectedConcentration = document.getElementById("arto_concentrationSelect").value;
+    var arto_dynamicDose = (parseFloat(arto_slider.value) * parseFloat(arto_weight)).toFixed(6);
+    var arto_dynamicVolume = ((parseFloat(arto_slider.value) * parseFloat(arto_weight)) / arto_selectedConcentration).toFixed(6);
+    arto_valDisplay.textContent = "Dose: " + arto_slider.value + ' mg/kg';
+    arto_dose_valDisplay.innerHTML = '<strong>Dosage Value: ' + arto_dynamicDose + 'mg</strong>';
+    arto_volume_valDisplay.innerHTML = '<strong>Volume Value: ' + arto_dynamicVolume + 'mg/ml</strong>';
+});
+// Initial calculation
+arto_updateValues();
+// Add event listener for the change event
+document.getElementById("arto_concentrationSelect").addEventListener("change", arto_updateValues);
+function arto_updateValues() {
+    var arto_set_dose = 0.03;
+    var arto_selectedConcentration = document.getElementById("arto_concentrationSelect").value;
+    var arto_dose_Value = (parseFloat(arto_set_dose) * parseFloat(arto_weight)).toFixed(6);
+    var arto_volume_Value = ((parseFloat(arto_set_dose) * parseFloat(arto_weight)) / arto_selectedConcentration).toFixed(6);
+    document.getElementById("arto_sliderValueDisplay").textContent = "Dose: " + arto_set_dose + ' mg/kg';
+    document.getElementById("arto_dose_ValueDisplay").innerHTML = '<strong>Dosage Value: ' + arto_dose_Value + 'mg</strong>';
+    document.getElementById("arto_volume_ValueDisplay").innerHTML = '<strong>Volume Value: ' + arto_volume_Value + 'mg/ml</strong>';
+}
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "B">
+<h2> B </h2>
+<hr class="rounded">
+<!-- Buprenorphine Slider -->
+<div id="bup_Display"> Buprenorphine (0.6 mg/ml)</div>
+<div id="bup_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">0.2</span>
+<input type="range" id="bup_slider" name="bup_slider_value" min="0.02" max="0.03" step="0.001">
+<span style="display: inline-block; width: 50px; text-align: right;">0.03</span>
+<br>
+<div id="bup_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="bup_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var bup_slider = document.getElementById("bup_slider");
+   var bup_valDisplay = document.getElementById("bup_sliderValueDisplay");
+   var bup_dose_valDisplay = document.getElementById("bup_dose_ValueDisplay");
+   var bup_volume_valDisplay = document.getElementById("bup_volume_ValueDisplay");
+   var bup_resultValue = "{{ result }}";
+   var bup_weight = "{{ weight }}";
+   var bup_concentration = 0.6 ;
+
+   bup_slider.addEventListener("input", function() 
+   {
+     var bup_dynamicDose = (parseFloat(bup_slider.value) * parseFloat(bup_weight)).toFixed(6);
+     var bup_dynamicVolume = ((parseFloat(bup_slider.value) * parseFloat(bup_weight)) / bup_concentration).toFixed(6);
+     bup_valDisplay.textContent = "Dose: " + bup_slider.value  + ' mg/kg';
+     bup_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + bup_dynamicDose + 'mg </strong>');
+     bup_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + bup_dynamicVolume + 'mg/ml </strong>');
+   });
+</script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Butorphanol -->
+<div id="but_Display">Butorphanol (10 mg/ml)</div>
+<div id="but_Val_Display">Dose: 0.2 mg/kg</div>
+<script>
+  var but_set_dose = 0.2;
+  var but_concentration = 10 ;
+  var but_resultValue = "{{ result }}";
+  var but_weight = "{{ weight }}";
+      var but_dose_Value = (parseFloat(but_set_dose) * parseFloat(but_weight)).toFixed(6);
+      var but_volume_Value = ((parseFloat(but_set_dose) * parseFloat(but_weight)) / but_concentration).toFixed(6);
+      document.write('<p><strong>Dosage Value: ' + but_dose_Value + ' mg</strong> | <strong>Volume Value: ' + but_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "C">
+<h2> C </h2>
+<hr class="rounded">
+
+      <!-- Cerenia -->
+      <div id="cer_inj_Display">Cerenia Injectable (10 mg/ml)</div>
+      <div id="cer_inj_Val_Display">Dose: 1 mg/kg</div>
+      <script>
+        var cer_inj_set_dose = 1;
+        var cer_inj_concentration = 10 ;
+        var cer_inj_resultValue = "{{ result }}";
+        var cer_inj_weight = "{{ weight }}";
+            var cer_inj_dose_Value = (parseFloat(cer_inj_set_dose) * parseFloat(cer_inj_weight)).toFixed(6);
+            var cer_inj_volume_Value = ((parseFloat(cer_inj_set_dose) * parseFloat(cer_inj_weight)) / cer_inj_concentration).toFixed(6);
+            document.write('<p><strong>Dosage Value: ' + cer_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + cer_inj_volume_Value + ' mg/ml</strong></p>');    
+    </script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Convenia  -->
+<div id="con_inj_Display">Convenia (10 mg/ml)</div>
+<div id="con_inj_Val_Display">Dose: 1 mg/kg</div>
+<script>
+  var con_inj_set_dose = 1;
+  var con_inj_concentration = 10 ;
+  var con_inj_resultValue = "{{ result }}";
+  var con_inj_weight = "{{ weight }}";
+      var con_inj_dose_Value = (parseFloat(con_inj_set_dose) * parseFloat(con_inj_weight)).toFixed(6);
+      var con_inj_volume_Value = ((parseFloat(con_inj_set_dose) * parseFloat(con_inj_weight)) / con_inj_concentration).toFixed(6);
+      document.write('<p><strong>Dosage Value: ' + con_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + con_inj_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "D">
+<h2> D </h2>
+<hr class="rounded">
+
+    <!-- Dexmedetomodine Slider --> 
+    <div id="dex_Display">Dexmedetomodine (0.5 mg/ml)</div>
+    <div id="dex_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+    <span style="display: inline-block; width: 50px; text-align: left;">0.003</span>
+    <input type="range" id="dex_slider" name="dex_slider_value" min="0.003" max="0.007" step="0.0005">
+    <span style="display: inline-block; width: 50px; text-align: right;">0.007</span>
+    <br>
+    <div id="dex_dose_ValueDisplay">Dosage Value: 0 mg</div>
+    <div id="dex_volume_ValueDisplay">Volume Value: 0</div>
+    <br>
+
+    <script>
+        var dex_slider = document.getElementById("dex_slider");
+        var dex_valDisplay = document.getElementById("dex_sliderValueDisplay");
+        var dex_dose_valDisplay = document.getElementById("dex_dose_ValueDisplay");
+        var dex_volume_valDisplay = document.getElementById("dex_volume_ValueDisplay");
+        var dex_resultValue = "{{ result }}";
+        var dex_weight = "{{ weight }}";
+        var dex_concentration = 0.5 ;
+
+        dex_slider.addEventListener("input", function() 
+        {
+          var dex_dynamicDose = (parseFloat(dex_slider.value) * parseFloat(dex_weight)).toFixed(6);
+          var dex_dynamicVolume = ((parseFloat(dex_slider.value) * parseFloat(dex_weight)) / dex_concentration).toFixed(6);
+          dex_valDisplay.textContent = "Dose: " + dex_slider.value  + ' mg/kg';
+          dex_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + dex_dynamicDose + 'mg </strong>');
+          dex_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + dex_dynamicVolume + 'mg/ml </strong>');
+        });
+    </script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "E">
+<h2> E </h2>
+<hr class="dotted">
+<!-- Epinephrine-->
+<div id="epi_Display">
+    Epinephrine
+    <select id="epi_concentrationSelect" onchange="epi_updateValues()">
+        <option value="5.0">1.0 mg/ml</option>
+        <option value="10.0">0.1 mg/ml</option>
+    </select>
+</div>
+<div id="epi_Val_Display">Dose: 0.01 mg/kg</div>
+<div id="epi_outputValues"></div>
+
+<script>
+function epi_updateValues() 
+{
+    var epi_set_dose = 0.01;
+    var epi_resultValue = "{{ result }}";
+    var epi_weight = "{{ weight }}";
+    var epi_selectedConcentration = document.getElementById("epi_concentrationSelect").value;
+    var epi_dose_Value = (parseFloat(epi_set_dose) * parseFloat(epi_weight)).toFixed(6);
+    var epi_volume_Value = ((parseFloat(epi_set_dose) * parseFloat(epi_weight)) / epi_selectedConcentration).toFixed(6);
+    document.getElementById("epi_outputValues").innerHTML = '<p><strong>Dosage Value: ' + epi_dose_Value + ' mg</strong> | <strong>Volume Value: ' + epi_volume_Value + ' mg/ml</strong></p>';
+}
+
+document.getElementById("epi_concentrationSelect").addEventListener("change", epi_updateValues);
+
+    </script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "G">
+<h2> G </h2>
+<hr class="rounded">
+
+    <!-- Gabapentin Slider --> 
+    <div id="gaba_Display"> Gabapentin (100 mg)</div>
+    <div id="gaba_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+    <span style="display: inline-block; width: 50px; text-align: left;">20</span>
+    <input type="range" id="gaba_slider" name="gaba_slider_value" min="20" max="40" step="1">
+    <span style="display: inline-block; width: 50px; text-align: right;">40</span>
+    <br>
+    <div id="gaba_dose_ValueDisplay">Dosage Value: 0 mg</div>
+    <div id="gaba_volume_ValueDisplay">Volume Value: 0</div>
+    <br>
+    <script>
+        var gaba_slider = document.getElementById("gaba_slider");
+        var gaba_valDisplay = document.getElementById("gaba_sliderValueDisplay");
+        var gaba_dose_valDisplay = document.getElementById("gaba_dose_ValueDisplay");
+        var gaba_volume_valDisplay = document.getElementById("gaba_volume_ValueDisplay");
+        var gaba_resultValue = "{{ result }}";
+        var gaba_weight = "{{ weight }}";
+        var gaba_concentration = 100 ;
+
+        gaba_slider.addEventListener("input", function() 
+        {
+          var gaba_dynamicDose = (parseFloat(gaba_slider.value) * parseFloat(gaba_weight)).toFixed(6);
+          var gaba_dynamicVolume = ((parseFloat(gaba_slider.value) * parseFloat(gaba_weight)) / gaba_concentration).toFixed(6);
+              gaba_valDisplay.textContent = "Dose: " + gaba_slider.value   + ' mg/kg';
+              gaba_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + gaba_dynamicDose + 'mg </strong>');
+              gaba_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + gaba_dynamicVolume + 'mg/ml </strong>');
+
+        });
+    </script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Glycopyrrolate  -->
+<div id="gly_Display">Glycopyrrolate (0.2 mg/ml)</div>
+<div id="gly_Val_Display">Dose: 0.01 mg/kg</div>
+<script>
+  var gly_set_dose = 0.01;
+  var gly_concentration = 0.2 ;
+  var gly_resultValue = "{{ result }}";
+  var gly_weight = "{{ weight }}";
+      var gly_dose_Value = (parseFloat(gly_set_dose) * parseFloat(gly_weight)).toFixed(6);
+      var gly_volume_Value = ((parseFloat(gly_set_dose) * parseFloat(gly_weight)) / gly_concentration).toFixed(6);
+      document.write('<p><strong>Dosage Value: ' + gly_dose_Value + ' mg</strong> | <strong>Volume Value: ' + gly_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "H">
+<h2> H </h2>
+<hr class="rounded">
+
+<!-- Hydromorphone Slider --> 
+    <div id="hydro_Display">Hydromorphone (2 mg/ml)</div>
+    <div id="hydro_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+    <span style="display: inline-block; width: 50px; text-align: left;">0.1</span>
+    <input type="range" id="hydro_slider" name="hydro_slider_value" min="0.1" max="0.2" step="0.01">
+    <span style="display: inline-block; width: 50px; text-align: right;">0.2</span>
+    <br>
+    <br>
+    <div id="hydro_dose_ValueDisplay">Dosage Value: 0 mg</div>
+    <div id="hydro_volume_ValueDisplay">Volume Value: 0</div>
+    <script>
+        var hydro_slider = document.getElementById("hydro_slider");
+        var hydro_valDisplay = document.getElementById("hydro_sliderValueDisplay");
+        var hydro_dose_valDisplay = document.getElementById("hydro_dose_ValueDisplay");
+        var hydro_volume_valDisplay = document.getElementById("hydro_volume_ValueDisplay");
+        var hydro_resultValue = "{{ result }}";
+        var hydro_weight = "{{ weight }}";
+        var hydro_concentration = 2 ;
+       
+        hydro_slider.addEventListener("input", function() 
+        {
+            var hydro_dynamicDose = (parseFloat(hydro_slider.value) * parseFloat(hydro_weight)).toFixed(6);
+            var hydro_dynamicVolume = ((parseFloat(hydro_slider.value) * parseFloat(hydro_weight)) / hydro_concentration).toFixed(6);
+            hydro_valDisplay.textContent = "Dose: " + hydro_slider.value  + ' mg/kg';
+            hydro_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + hydro_dynamicDose + 'mg/kg </strong>');
+            hydro_volume_valDisplay.innerHTML = ('<strong>Dosage Value: ' + hydro_dynamicVolume + 'mg/ml </strong>');
+
+        });
+    </script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "K">
+<h2> K </h2>
+<hr class="rounded">
+
+<!-- Ketamine  -->
+<div id="ket_Display"> Ketamine (100 mg/ml)</div>
+<div id="ket_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+<span style="display: inline-block; width: 50px; text-align: left;">1.0</span>
+<input type="range" id="ket_slider" name="ket_slider_value" min="1.0" max="2.0" step="0.1">
+<span style="display: inline-block; width: 50px; text-align: right;">2.0</span>
+<br>
+<div id="ket_dose_ValueDisplay">Dosage Value: 0 mg</div>
+<div id="ket_volume_ValueDisplay">Volume Value: 0</div>
+<br>
+<script>
+   var ket_slider = document.getElementById("ket_slider");
+   var ket_valDisplay = document.getElementById("ket_sliderValueDisplay");
+   var ket_dose_valDisplay = document.getElementById("ket_dose_ValueDisplay");
+   var ket_volume_valDisplay = document.getElementById("ket_volume_ValueDisplay");
+   var ket_resultValue = "{{ result }}";
+   var ket_weight = "{{ weight }}";
+   var ket_concentration = 100 ;
+
+   ket_slider.addEventListener("input", function() 
+   {
+     var ket_dynamicDose = (parseFloat(ket_slider.value) * parseFloat(ket_weight)).toFixed(6);
+     var ket_dynamicVolume = ((parseFloat(ket_slider.value) * parseFloat(ket_weight)) / ket_concentration).toFixed(6);
+     ket_valDisplay.textContent = "Dose: " + ket_slider.value  + ' mg/kg';
+     ket_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + ket_dynamicDose + 'mg </strong>');
+     ket_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + ket_dynamicVolume + 'mg/ml </strong>');
+
+   });
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "M">
+<h2> M </h2>
+<hr class="rounded">
+
+<!-- Meloxicam Injection-->
+<div id="mel_inj_Display">Meloxicam Injectable (5 mg/ml)</div>
+<div id="mel_inj_Val_Display">Dose: 0.2 mg/kg</div>
+<script>
+  var mel_inj_set_dose = 0.2;
+  var mel_inj_concentration = 5 ;
+  var mel_inj_resultValue = "{{ result }}";
+  var mel_inj_weight = "{{ weight }}";
+      var mel_inj_dose_Value = (parseFloat(mel_inj_set_dose) * parseFloat(mel_inj_weight)).toFixed(6);
+      var mel_inj_volume_Value = ((parseFloat(mel_inj_set_dose) * parseFloat(mel_inj_weight)) / mel_inj_concentration).toFixed(6);
+        document.write('<p><strong>Dosage Value: ' + mel_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + mel_inj_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Midazolam -->
+<div id="midaz_Display">
+    Midazolam
+    <select id="midaz_concentrationSelect" onchange="midaz_updateValues()">
+        <option value="5.0">5.0 mg/ml</option>
+        <option value="10.0">10.0 mg/ml</option>
+    </select>
+</div>
+<div id="midaz_Val_Display">Dose: 0.04 mg/kg</div>
+<div id="midaz_outputValues"></div>
+
+<script>
+function midaz_updateValues() {
+    var midaz_set_dose = 0.04;
+    var midaz_resultValue = "{{ result }}";
+    var midaz_weight = "{{ weight }}";
+    var midaz_selectedConcentration = document.getElementById("midaz_concentrationSelect").value;
+    var midaz_dose_Value = (parseFloat(midaz_set_dose) * parseFloat(midaz_weight)).toFixed(6);
+    var midaz_volume_Value = ((parseFloat(midaz_set_dose) * parseFloat(midaz_weight)) / midaz_selectedConcentration).toFixed(6);
+    document.getElementById("midaz_outputValues").innerHTML = '<p><strong>Dosage Value: ' + midaz_dose_Value + ' mg</strong> | <strong>Volume Value: ' + midaz_volume_Value + ' mg/ml</strong></p>';
+}
+// Add event listener for the change event
+document.getElementById("midaz_concentrationSelect").addEventListener("change", midaz_updateValues);
+
+    </script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "O">
+<h2> O </h2>
+<hr class="rounded">
+      <!-- Onsior Injectable -->
+      <div id="onsior_inj_Display">Onsior Injectable (20 mg/ml)</div>
+      <div id="onsior_inj_Val_Display">Dose: 2.0 mg/kg</div>
+      <script>
+        var onsior_inj_set_dose = 2.0;
+        var onsior_inj_concentration = 5 ;
+        var onsior_inj_resultValue = "{{ result }}";
+        var onsior_inj_weight = "{{ weight }}";
+            var onsior_inj_dose_Value = (parseFloat(onsior_inj_set_dose) * parseFloat(onsior_inj_weight)).toFixed(6);
+            var onsior_inj_volume_Value = ((parseFloat(onsior_inj_set_dose) * parseFloat(onsior_inj_weight)) / onsior_inj_concentration).toFixed(6);
+            document.write('<p><strong>Dosage Value: ' + onsior_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + onsior_inj_volume_Value + ' mg/ml</strong></p>');     
+    </script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "P">
+<h2> P </h2>
+<hr class="rounded">
+        <!-- Propofol Slider -->
+        <div id="prop_Display"> Propofol (10 mg/ml)</div>
+        <div id="prop_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+        <span style="display: inline-block; width: 50px; text-align: left;">4.0</span>
+        <input type="range" id="prop_slider" name="prop_slider_value" min="4.0" max="6.0" step="0.1">
+        <span style="display: inline-block; width: 50px; text-align: right;">6.0</span>
+        <br>
+        <div id="prop_dose_ValueDisplay">Dosage Value: 0 mg</div>
+        <div id="prop_volume_ValueDisplay">Volume Value: 0</div>
+        <br>
+        <script>
+           var prop_slider = document.getElementById("prop_slider");
+           var prop_valDisplay = document.getElementById("prop_sliderValueDisplay");
+           var prop_dose_valDisplay = document.getElementById("prop_dose_ValueDisplay");
+           var prop_volume_valDisplay = document.getElementById("prop_volume_ValueDisplay");
+           var prop_resultValue = "{{ result }}";
+           var prop_weight = "{{ weight }}";
+           var prop_concentration = 10 ;
+        
+           prop_slider.addEventListener("input", function() 
+           {
+             var prop_dynamicDose = (parseFloat(prop_slider.value) * parseFloat(prop_weight)).toFixed(6);
+             var prop_dynamicVolume = ((parseFloat(prop_slider.value) * parseFloat(prop_weight)) / prop_concentration).toFixed(6);
+             prop_valDisplay.textContent = "Dose: " + prop_slider.value  + ' mg/kg';
+             prop_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + prop_dynamicDose + 'mg </strong>');
+             prop_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + prop_dynamicVolume + 'mg/ml </strong>');
+        
+           });
+        </script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "R">
+<h2> R </h2>
+<hr class="rounded">
+<!-- Rimadyl Injection-->
+<div id="rim_inj_Display">Rimadyl Injectable (50 mg/ml)</div>
+<div id="rim_inj_Val_Display">Dose: 4.4 mg/kg</div>
+<script>
+  var rim_inj_set_dose = 4.4;
+  var rim_inj_concentration = 50 ;
+  var rim_inj_resultValue = "{{ result }}";
+  var rim_inj_weight = "{{ weight }}";
+      var rim_inj_dose_Value = (parseFloat(rim_inj_set_dose) * parseFloat(rim_inj_weight)).toFixed(6);
+      var rim_inj_volume_Value = ((parseFloat(rim_inj_set_dose) * parseFloat(rim_inj_weight)) / rim_inj_concentration).toFixed(6);
+        document.write('<p><strong>Dosage Value: ' + rim_inj_dose_Value + ' mg</strong> | <strong>Volume Value: ' + rim_inj_volume_Value + ' mg/ml</strong></p>');    
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="rounded" id = "T">
+<h2> T </h2>
+<hr class="rounded">
+
+<!-- Tilazol --> 
+<div id="til_Display">Tilazol <select id="til_concentrationSelect" onchange="til_updateValues()">
+    <option value="100">100 mg/ml</option>
+    </select></div>
+<div id="til_Val_Display">Dose: 2.0 mg/kg</div>
+<div id="til_outputValues"></div>
+<script>
+function til_updateValues() {
+    var til_set_dose = 2.0;
+    var til_resultValue = "{{ result }}";
+    var til_weight = "{{ weight }}";
+    var til_selectedConcentration = document.getElementById("til_concentrationSelect").value;
+    var til_dose_Value = (parseFloat(til_set_dose) * parseFloat(til_weight)).toFixed(6);
+    var til_volume_Value = ((parseFloat(til_set_dose) * parseFloat(til_weight)) / til_selectedConcentration).toFixed(6);
+        document.getElementById("til_outputValues").innerHTML = '<p><strong>Dosage Value: ' + til_dose_Value + ' mg</strong> | <strong>Volume Value: ' + til_volume_Value + ' mg/ml</strong></p>';
+}
+
+</script>
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------>    
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<hr class="dotted">
+<!-- Trazodone Slider --> 
+      <div id="traz_Display">Trazodone (100 mg)</div>
+      <div id="traz_sliderValueDisplay">Dose: 0.00 mg/kg</div>
+      <span style="display: inline-block; width: 50px; text-align: left;">3.0</span>
+      <input type="range" id="traz_slider" name="traz_slider_value" min="3.0" max="7.5" step="0.1">
+      <span style="display: inline-block; width: 50px; text-align: right;">7.5</span>
+      <br>
+      <div id="traz_dose_ValueDisplay">Dosage Value: 0 mg</div>
+      <div id="traz_volume_ValueDisplay">Volume Value: 0</div>
+      <br>
+
+      <script>
+          var traz_slider = document.getElementById("traz_slider");
+          var traz_valDisplay = document.getElementById("traz_sliderValueDisplay");
+          var traz_dose_valDisplay = document.getElementById("traz_dose_ValueDisplay");
+          var traz_volume_valDisplay = document.getElementById("traz_volume_ValueDisplay");
+          var traz_resultValue = "{{ result }}";
+          var traz_weight = "{{ weight }}";
+          var traz_concentration = 100 ;
+
+          traz_slider.addEventListener("input", function() 
+          {
+            var traz_dynamicDose = (parseFloat(traz_slider.value) * parseFloat(traz_weight)).toFixed(6);
+            var traz_dynamicVolume = ((parseFloat(traz_slider.value) * parseFloat(traz_weight)) / traz_concentration).toFixed(6);
+            traz_valDisplay.textContent = "Dose: " + traz_slider.value  + ' mg/kg';
+            traz_dose_valDisplay.innerHTML = ('<strong>Dosage Value: ' + traz_dynamicDose + 'mg </strong>');
+            traz_volume_valDisplay.innerHTML = ('<strong>Volume Value: ' + traz_dynamicVolume + 'mg/ml </strong>');
+
+          });
+      </script>
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<!-- ON LOAD SECTION FOR CONCENTRATION CHANGES -->
+<!------------------------------------------------------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------> 
+<script>
+        window.onload = function() 
+        {
+        til_updateValues();
+        midaz_updateValues();
+        arto_updateValues();
+        epi_updateValues();
+        };
+</script>
+
+
+
+
+
+    </div>
+</body>
+
+</html>
+

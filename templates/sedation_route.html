@@ -1,0 +1,121 @@
+<!-- sedation_route.html -->
+
+<!-- *** Make this bitch appealing -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+.topnav 
+    {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #333;
+    }
+    .topnav a 
+    {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    }
+    .topnav h1 
+    {
+    margin: 0;
+    padding: 8px 16px;
+    float: top;
+    color: white;
+    }
+    .topnav a:hover
+    {
+    background-color: #ddd;
+    color: black;
+    }
+    .topnav a.active
+    {
+    background-color: #04AA6D;
+    color: white;
+    }
+/* Rounded border */
+hr.rounded 
+            {
+            border-top: 8px solid #bbb;
+            border-radius: 5px;
+            }
+/* Dotted border */
+            hr.dotted 
+            {
+            border-top: 3px dotted #bbb;
+            }
+/* Body Style */
+            body 
+            {
+            font-family: 'Times New Roman', serif;
+            padding-top: 100px; 
+            } 
+    /* Rounded border */
+    hr.rounded 
+    {
+    border-top: 4px solid hsl(0, 33%, 1%);
+    }
+    body 
+    {
+    font-family: 'Times New Roman', serif;
+    } 
+    *
+    {
+    box-sizing: border-box;
+    }
+    .column 
+    {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      height: 400px;
+    }
+    .column2 
+    {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      height: 700px;
+    }
+    .row:after 
+    {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+  </head>
+<body>
+  <div class = "topnav">
+    <h1>Veterinary Drug Calculator </h1>
+    <a class = "active"
+    <a href="/input_page">Input Page</a>
+    <a href="/slider_page">All</a>
+    <a href="/sedation_route">Sedation </a>
+    <a href="/ER_drugs">Emergency </a>
+    <a href="">General Injectable</a>
+    <a href="#">General Oral</a>
+</div>
+<div style="padding-left:36px"> 
+<p>{{ result }}</p>
+
+<body>
+    <h1>Sedation Drugs </h1> 
+    <!-- Link to the new page with the inputted weight -->
+    <a href="{{ url_for('canine_sedation_opts', weight=weight) }}"> Canine Sedation Protocol</a>
+    <br>
+    <br>
+    <a href="{{ url_for('feline_sedation_opts', weight=weight) }}"> Feline Sedation Protocol</a>
+
+</body>
+</html>
