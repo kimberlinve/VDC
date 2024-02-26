@@ -1,2 +1,2 @@
-Deployed via Render at https://vdc.onrender.com
-Deployment in progress....
+Work in progress.....Deployed via Render at https://vdc.onrender.com
+
