@@ -1,0 +1,126 @@
+<!-- gen_injectables.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .topnav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .topnav h1 {
+            margin: 0;
+            padding: 8px 16px;
+            float: top;
+            color: white;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Rounded border */
+        hr.rounded {
+            border-top: 8px solid #bbb;
+            border-radius: 5px;
+        }
+
+        /* Dotted border */
+        hr.dotted {
+            border-top: 3px dotted #bbb;
+        }
+
+        /* Body Style */
+        body {
+            font-family: 'Times New Roman', serif;
+            padding-top: 100px;
+        }
+
+        /* Rounded border */
+        hr.rounded {
+            border-top: 4px solid hsl(0, 33%, 1%);
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 400px;
+        }
+
+        .column2 {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 700px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        .disclaimer {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>General Use Injectable Medications</h1>
+    </header>
+    <div class="topnav">
+        <h1>Veterinary Drug Calculator </h1>
+        <a class="active" <a href="/input_page">Input Page</a>
+        <a href="/slider_page">All</a>
+        <a href="/sedation_route">Sedation </a>
+        <a href="#">Emergency </a>
+        <a href="#">General Injectable</a>
+        <a href="#">General Oral</a>
+        <a href="/calorie_calculator">Calorie Calculator</a>
+    </div>
+    <div style="padding-left:36px">
+        <p>{{ result }}</p>
+        <form action="/process_slider" method="post">
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong> This website is currently under construction/review. Results and
+                    information on this site are to be used with caution as of 2/5/2024. </p>
+            </div>

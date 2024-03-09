@@ -23,7 +23,7 @@ def process_input():
     checkbox1 = request.form.get('checkbox1')
     checkbox2 = request.form.get('checkbox2')
 
-    weight_input = int(user_input)
+    weight_input = float(user_input)
     
     # Add your if-else logic based on checkbox values
     if checkbox1:
@@ -77,6 +77,29 @@ def ER_drugs():
     result = session.get('result')
     print(f"Weight on new_page: {weight}")  # Add this line for debugging
     return render_template('ER_drugs.html', weight=weight, result=result)
+
+@app.route('/calorie_calculator')
+def calorie_calculator():
+    weight = session.get('weight')
+    result = session.get('result')
+    print(f"Weight on new_page: {weight}")  # Add this line for debugging
+    return render_template('calorieCalculator.html', weight=weight, result=result)
+
+@app.route('/gen_orals')
+def gen_orals():
+    weight = session.get('weight')
+    result = session.get('result')
+    print(f"Weight on new_page: {weight}")  # Add this line for debugging
+    return render_template('gen_orals.html', weight=weight, result=result)
+
+
+
+@app.route('/gen_injectables')
+def gen_injectables():
+    weight = session.get('weight')
+    result = session.get('result')
+    print(f"Weight on new_page: {weight}")  # Add this line for debugging
+    return render_template('gen_injectables.html', weight=weight, result=result)
 
 
 if __name__ == '__main__':

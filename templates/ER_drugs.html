@@ -95,6 +95,15 @@ hr.rounded
       display: table;
       clear: both;
     }
+
+
+    .disclaimer {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            text-align: center;
+        }
+        
     </style>
   </head>
 <body>
@@ -107,10 +116,16 @@ hr.rounded
     <a href="/input_page">Input Page</a>
     <a href="/slider_page">All</a>
     <a href="/sedation_route">Sedation </a>
-    <a href="#">Emergency </a>
-    <a href="#">General Injectable</a>
-    <a href="#">General Oral</a>
+    <a href="/ER_drugs">Emergency </a>
+    <a href="/gen_injectables">General Injectable</a>
+    <a href="/gen_orals">General Oral</a>
+    <a href="/calorie_calculator">Calorie Calculator</a>
 </div>
 <div style="padding-left:36px"> 
 <p>{{ result }}</p>
 <form action="/process_slider" method="post">
+
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This website is currently under construction/review. Results and
+        information on this site are to be used with caution as of 2/5/2024. </p>
+</div>

@@ -5,12 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start Here</title>
+    <style>
+        .disclaimer {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This website is currently under construction/review. Results and information on this site are to be used with caution as of 2/5/2024. </p>
+    </div>
+
     <h1>Enter Patient's Weight</h1>
+    <h5> (Round to the nearest hundredth) </h5>
     <form action="/process_input" method="post">
         <label for="userInput">Enter here:</label>
-        <input type="text" id="userInput" name="user_input">
+        <input type="number" id="userInput" name="user_input" step="0.01">
         <br>
         <label for="checkbox1">Lb.</label>
         <input type="checkbox" id="checkbox1" name="checkbox1" value="1">

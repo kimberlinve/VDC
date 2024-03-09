@@ -1,0 +1,366 @@
+<!-- calorieCalculator.html -->
+
+<!-- Animal weight (kg) x dosage (mg/kg) 
+    RER Resting Energy Requirements 70(weight in kgs)^(3/4) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .topnav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px 15px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .topnav h1 {
+            margin: 0;
+            padding: 8px 16px;
+            float: top;
+            color: white;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        /* Rounded border */
+        hr.rounded {
+            border-top: 8px solid #bbb;
+            border-radius: 5px;
+        }
+
+        /* Dotted border */
+        hr.dotted {
+            border-top: 3px dotted #bbb;
+        }
+
+        /* Body Style */
+        body {
+            font-family: 'Times New Roman', serif;
+            padding-top: 100px;
+        }
+
+        /* Rounded border */
+        hr.rounded {
+            border-top: 4px solid hsl(0, 33%, 1%);
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 400px;
+        }
+
+        .column2 {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 700px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        table {
+      border-collapse: collapse;
+      width: 300px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+   
+   </style>
+</head>
+
+<body>
+    <header>
+        <h1>Calorie Calculator</h1>
+    </header>
+    <div class="topnav">
+        <h1>Veterinary Drug Calculator </h1>
+        <a class = "active"
+        <a href="/input_page">Input Page</a>
+        <a href="/slider_page">All</a>
+        <a href="/sedation_route">Sedation </a>
+        <a href="/ER_drugs">Emergency </a>
+        <a href="/gen_injectables">General Injectable</a>
+        <a href="/gen_orals">General Oral</a>
+        <a href="/calorie_calculator">Calorie Calculator</a>
+    </div>
+    <div style="padding-left:36px">
+
+        <form action="/process_slider" method="post">
+
+            <p>{{ result }}</p>
+
+           <p>Resting Energy Requirements or RER, is calculated by multiplying the animal’s body weight in kilograms raised to the ¾ power by 70</p>
+        <script>
+            var current_weight = "{{ weight }}";
+            var restingEnergyRequirement = (70 * Math.pow(parseFloat(current_weight), 0.75)).toFixed(6);
+            document.getElementById('restingEnergyRequirement1' ).textContent = restingEnergyRequirement
+            document.write('Current weight: ' + current_weight );
+            document.write('RER: ' + restingEnergyRequirement);
+                       
+</script>
+
+
+<table>
+<!-- Header Labels -->
+    <thead>
+    <tr>
+        <th>   </th>
+    <th> Resting Energy Requirement (RER) </th>
+    <th> Multiplication Factor for RER </th>
+    <th>Daily Calorie Estimate</th>
+    </tr>
+  
+
+
+<body>
+    <!-- Calorie Slider  -->
+    <div id="calorie_Display"> Calorie Range</div>
+    <div id="calorie_sliderValueDisplay"> RER x 0.0 </div>
+    <span style="display: inline-block; width: 50px; text-align: left;">1.0</span>
+    <input type="range" id="calorie_slider" name="calorie_slider_value" min="1.0" max="5.0" step="0.1">
+    <span style="display: inline-block; width: 50px; text-align: right;">5.0</span>
+    <br>
+    <div id="calorie_dose_ValueDisplay">Daily Calorie Intake: 0 </div>
+    <br>
+    <script>
+       var calorie_slider = document.getElementById("calorie_slider");
+       var calorie_valDisplay = document.getElementById("calorie_sliderValueDisplay");
+       var calorie_count_valDisplay = document.getElementById("calorie_dose_ValueDisplay");
+       var calorie_resultValue = "{{ result }}";
+       var calorie_weight = "{{ weight }}";
+    
+       calorie_slider.addEventListener("input", function() 
+       {
+         var calorie_dynamicDose = (parseFloat(calorie_slider.value) * parseFloat(restingEnergyRequirement)).toFixed(6);
+         calorie_valDisplay.textContent = "RER x " + calorie_slider.value ;
+         calorie_count_valDisplay.innerHTML = ('<strong> Daily Calorie Intake: ' + calorie_dynamicDose + 'k/cal </strong>');
+        });
+    
+    </script>
+</body>
+
+<!-- Row 1 -->
+</thead>
+  <tbody> 
+    <h3> Calorie Calculator for Cats and Dogs </h3>
+  <!-- Row 2 -->
+  <tr>
+    <td> Neutered Adult</td>
+    <td><span id="NeuteredRER"></span></td>
+    <td> x  1.6  </td>
+    <td><span id="NeuteredRERx"></span></td>
+
+  </tr>
+  <!-- Row 3 -->
+  <tr>
+    <td> Intact Adult</td>
+    <td><span id="IntactRER"></span></td>
+    <td> x  1.8  </td>
+    <td><span id="IntactRERx"></span></td>
+
+  </tr>
+<!-- Row 4 -->
+<tr>
+    <td> Inactive/Obese Prone</td>
+    <td><span id="InactiveRER"></span></td>
+    <td>
+        <select id="multiplierSelect">
+            <option value="1.2">x 1.2</option>
+            <option value="1.3">x 1.3</option>
+            <option value="1.4">x 1.4</option>
+        </select>
+    </td>
+    <td><span id="InactiveRERx"></span></td>
+</tr>
+
+  <!-- Row 7 -->
+  <tr>
+    <td>Active, Working Dogs</td>
+    <td><span id="ActiveRER"></span></td>
+    <td>
+        <select id="multiplierSelect2">
+            <option value="2.0">x 2.0</option>
+            <option value="2.5">x 2.5</option>
+            <option value="3.0">x 3.0</option>
+            <option value="3.5">x 3.5</option>
+            <option value="4.0">x 4.0</option>
+            <option value="4.5">x 4.5</option>
+            <option value="5.0">x 5.0</option>
+        </select>
+    </td>
+    <td><span id="ActiveRERx"></span></td>
+  </tr>
+
+  <tr>
+    <td>Weight Loss</td>
+    <td>
+        Goal Weight: 
+        <span id="currentWeight">{{ weight }} kg.</span>
+        <button type="button" onclick="adjustWeight('loss', -1)">-</button>
+        <button type="button" onclick="adjustWeight('loss', 1)">+</button>
+    </td>
+    <td> x  1.0  </td>
+    <td><span id="WeightLossRERx"></span></td>
+</tr>
+
+<!-- Row 6 -->
+  <tr>
+    <td>Weight Gain</td>
+    <td>
+        Goal Weight: 
+        <span id="currentWeightGain">{{ weight }} kg.</span>
+        <button type="button" onclick="adjustWeight('gain', -1)">-</button>
+        <button type="button" onclick="adjustWeight('gain', 1)">+</button>
+    </td>
+    <td>
+        <select id="multiplierSelect3" onchange="calculateWeightGainRER()">
+            <option value="1.2">x 1.2</option>
+            <option value="1.3">x 1.3</option>
+            <option value="1.4">x 1.4</option>
+            <option value="1.5">x 1.5</option>
+            <option value="1.6">x 1.6</option>
+            <option value="1.7">x 1.7</option>
+            <option value="1.8">x 1.8</option>
+        </select>
+    </td>
+    <td><span id="WeightGainRERx"></span></td>
+</tr>
+
+</tbody>
+</table>
+
+<script>
+    // Update RER value in the table
+    document.getElementById('NeuteredRER').textContent = restingEnergyRequirement;
+    document.getElementById('NeuteredRERx').textContent = (restingEnergyRequirement * 1.6).toFixed(2) + " k/cal";
+    document.getElementById('IntactRER').textContent = restingEnergyRequirement;
+    document.getElementById('IntactRERx').textContent = (restingEnergyRequirement * 1.8).toFixed(2) + " k/cal";
+    document.getElementById('InactiveRER').textContent = restingEnergyRequirement;
+
+    // Check if WeightLossRER and WeightGainRER rows exist before updating them
+    var weightLossRER = document.getElementById('WeightLossRER');
+    var weightGainRER = document.getElementById('WeightGainRER');
+    if (weightLossRER !== null) {
+        weightLossRER.textContent = restingEnergyRequirement;
+    }
+    if (weightGainRER !== null) {
+        weightGainRER.textContent = restingEnergyRequirement;
+    }
+
+    // Update ActiveRER only if the corresponding row exists
+    var activeRER = document.getElementById('ActiveRER');
+    if (activeRER !== null) {
+        activeRER.textContent = restingEnergyRequirement;
+    }
+
+    // WeightGain and WeightLoss RERs
+    function adjustWeight(type, step) {
+        var currentWeightElement = document.getElementById(type === 'loss' ? 'currentWeight' : 'currentWeightGain');
+        var currentWeight = parseFloat(currentWeightElement.textContent);
+        var stepValue = 0.1; // Change this to adjust the step value
+
+        currentWeight += step * stepValue;
+        currentWeight = currentWeight.toFixed(1);
+        currentWeightElement.textContent = currentWeight + " kg.";
+
+        if (type === 'loss') {
+            calculateWeightLossRER(currentWeight);
+        } else if (type === 'gain') {
+            calculateWeightGainRER();
+        }
+    }
+
+    // Function to calculate WeightLoss RER
+    function calculateWeightLossRER(weight) {
+        var multiplier = 1.0; // Fixed multiplier for WeightLoss
+        var restingEnergyRequirement = (70 * Math.pow(weight, 0.75)).toFixed(2);
+        var result = (restingEnergyRequirement * multiplier).toFixed(2) + " k/cal";
+        document.getElementById('WeightLossRERx').textContent = result;
+    }
+
+    // Function to calculate WeightGain RER
+    function calculateWeightGainRER() {
+        var currentWeightElement = document.getElementById('currentWeightGain');
+        var currentWeight = parseFloat(currentWeightElement.textContent);
+        var multiplier = parseFloat(document.getElementById('multiplierSelect3').value);
+        var restingEnergyRequirement = (70 * Math.pow(currentWeight, 0.75)).toFixed(2);
+        var result = (restingEnergyRequirement * multiplier).toFixed(2) + " k/cal";
+        document.getElementById('WeightGainRERx').textContent = result;
+    }
+
+    // Event listener for the multiplier selection change
+    var multiplierSelect3 = document.getElementById('multiplierSelect3');
+    multiplierSelect3.addEventListener('change', function() {
+        var selectedMultiplier3 = multiplierSelect3.value;
+        calculateWeightGainRER(selectedMultiplier3);
+    });
+
+    // InactiveRER 
+    var multiplierSelect = document.getElementById('multiplierSelect');
+    var InactiveRER = parseFloat(restingEnergyRequirement);
+
+    multiplierSelect.addEventListener('change', function() {
+        var selectedMultiplier = parseFloat(multiplierSelect.value);
+        var result = (InactiveRER * selectedMultiplier).toFixed(2) + " k/cal";
+        document.getElementById('InactiveRERx').textContent = result;
+    });
+
+    // ActiveRER
+    var multiplierSelect2 = document.getElementById('multiplierSelect2');
+    var ActiveRER = parseFloat(restingEnergyRequirement);
+
+    multiplierSelect2.addEventListener('change', function() {
+        var selectedMultiplier2 = parseFloat(multiplierSelect2.value);
+        var result = (ActiveRER * selectedMultiplier2).toFixed(2) + " k/cal";
+        document.getElementById('ActiveRERx').textContent = result;
+    });
+</script>
+</body>
+<p> Reference Source: <a href="https://vet.osu.edu/vmc/companion/our-services/nutrition-support-service/basic-calorie-calculator#:~:text=(Resting%20Energy%20Requirements%20or%20RER,to%20estimate%20resting%20calorie%20needs.">vet.osu.edu</a></p>
+</html>
+
+           

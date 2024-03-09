@@ -1,0 +1,153 @@
+<!-- gen_orals.html -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+/* Main Nav Bar */
+.topnav 
+    {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #333;
+    }
+    .topnav a 
+    {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    }
+    .topnav h1 
+    {
+    margin: 0;
+    padding: 8px 16px;
+    float: top;
+    color: white;
+    }
+    .topnav a:hover
+    {
+    background-color: #ddd;
+    color: black;
+    }
+    .topnav a.active
+    {
+    background-color: #04AA6D;
+    color: white;
+    }
+/* Rounded border */
+hr.rounded 
+            {
+            border-top: 8px solid #bbb;
+            border-radius: 5px;
+            }
+/* Dotted border */
+            hr.dotted 
+            {
+            border-top: 3px dotted #bbb;
+            }
+/* Body Style */
+            body 
+            {
+            font-family: 'Times New Roman', serif;
+            padding-top: 100px; 
+            } 
+ /* Alphabetical Nav Bar */       
+ .topnav1 {
+    position: fixed;
+    top: 100px; /* Keep the top value as it is */
+    left: 0; /* Set left position to 0 to align it to the left side */
+    width: 100%;
+    z-index: 3000;
+    padding-left: 100px;
+    background-color: #04AA6D;
+    color: #333;
+}
+
+.topnav1 a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 6px 6px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.topnav1 a:hover {
+    background-color: #ddd;
+    color: black;
+}
+/* Create space for fixed navbar */
+        :target 
+        {
+        scroll-margin-top: 105px; /* Adjust this value based on the height of your topnav bar */
+        }
+
+        .disclaimer {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>General Use Oral Medications</h1>
+    </header>
+    <div class="topnav">
+        <h1>Veterinary Drug Calculator </h1>
+        <a class="active" <a href="/input_page">Input Page</a>
+        <a href="/slider_page">All</a>
+        <a href="/sedation_route">Sedation </a>
+        <a href="/ER_drugs">Emergency </a>
+        <a href="/gen_injectables">General Injectable</a>
+        <a href="/gen_orals">General Oral</a>
+        <a href="/calorie_calculator">Calorie Calculator</a>
+    </div>
+    <div style="padding-left:36px">
+        <p>{{ result }}</p>
+        <form action="/process_slider" method="post">
+
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong> This website is currently under construction/review. Results and
+                    information on this site are to be used with caution as of 2/5/2024. </p>
+            </div>
+            <div class="topnav1">
+                <a class="active" 
+                <a href="#Antibiotics">Antibiotics</a>
+                <a href="#Steriods">Steriods</a>
+                <a href="#NSAIDs">NSAIDs</a>
+                <a href="#Dewormers">Dewormers</a>
+                
+            </div>
+            
+            <div style="padding-left:36px"> 
+
+<hr class="rounded" id = "Antibiotics">
+<h2> Antibiotics </h2>
+<hr class="rounded">
+
+<hr class="rounded" id = "Steriods">
+<h2> Steriods </h2>
+<hr class="rounded">
+
+
+<hr class="rounded" id = "NSAIDs">
+<h2> NSAIDs </h2>
+<hr class="rounded">
+
+<hr class="rounded" id = "Dewormers">
+<h2> Dewormers </h2>
+<hr class="rounded">
