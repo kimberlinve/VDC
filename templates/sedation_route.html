@@ -93,6 +93,25 @@ hr.rounded
       display: table;
       clear: both;
     }
+
+
+    .sedation-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: inline-block;
+            margin: 0;
+        }
+        .sedation-button img {
+            width: 200px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+
+
+
+
     </style>
   </head>
 <body>
@@ -100,7 +119,7 @@ hr.rounded
     <h1>Veterinary Drug Calculator </h1>
     <a class = "active"
     <a href="/input_page">Input Page</a>
-    <a href="/slider_page">All</a>
+    <a href="/slider_page">Frequent Use</a>
     <a href="/sedation_route">Sedation </a>
     <a href="/ER_drugs">Emergency </a>
     <a href="/gen_injectables">General Injectable</a>
@@ -113,10 +132,28 @@ hr.rounded
 <body>
     <h1>Sedation Drugs </h1> 
     <!-- Link to the new page with the inputted weight -->
+ 
+ <!-- 
     <a href="{{ url_for('canine_sedation_opts', weight=weight) }}"> Canine Sedation Protocol</a>
     <br>
     <br>
     <a href="{{ url_for('feline_sedation_opts', weight=weight) }}"> Feline Sedation Protocol</a>
+-->
+
+    <form action="{{ url_for('canine_sedation_opts', weight=weight) }}" method="get">
+      <button type="submit" class="sedation-button">
+          <img src="images/dog-button.png" alt="Canine Sedation Protocol">
+      </button>
+    </form>
+
+    <br><br>
+
+    <!-- Button for Feline Sedation Protocol -->
+    <form action="{{ url_for('feline_sedation_opts', weight=weight) }}" method="get">
+      <button type="submit" class="sedation-button">
+          <img src="images/cat-button.png" alt="Feline Sedation Protocol">
+      </button>
+    </form>
 
 </body>
 </html>

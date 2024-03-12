@@ -120,7 +120,7 @@
         <h1>Veterinary Drug Calculator </h1>
         <a class = "active"
         <a href="/input_page">Input Page</a>
-        <a href="/slider_page">All</a>
+        <a href="/slider_page">Frequent Use</a>
         <a href="/sedation_route">Sedation </a>
         <a href="/ER_drugs">Emergency </a>
         <a href="/gen_injectables">General Injectable</a>
@@ -134,6 +134,8 @@
             <p>{{ result }}</p>
 
            <p>Resting Energy Requirements or RER, is calculated by multiplying the animal’s body weight in kilograms raised to the ¾ power by 70</p>
+
+           <p>Calculating your pet's ideal calorie intake is highly individualized and based upon your pet's life style, age, breed and health factors. This provides base estimations based off of standard RER requirements.</p>
         <script>
             var current_weight = "{{ weight }}";
             var restingEnergyRequirement = (70 * Math.pow(parseFloat(current_weight), 0.75)).toFixed(6);
