@@ -95,19 +95,22 @@ hr.rounded
     }
 
 
-    .sedation-button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            display: inline-block;
-            margin: 0;
-        }
-        .sedation-button img {
-            width: 200px; /* Adjust width as needed */
-            height: auto; /* Maintain aspect ratio */
-        }
+    .button-container {
+    display: flex; /* Use flexbox to make the buttons display in a row */
+}
 
+.sedation-button {
+    margin-right: 50px;
+    border: none;
+    padding: 0; /* Remove padding */
+    background-color: transparent; 
+    /* Add space between the buttons */
+}
+
+.sedation-button img {
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
 
 
 
@@ -140,20 +143,23 @@ hr.rounded
     <a href="{{ url_for('feline_sedation_opts', weight=weight) }}"> Feline Sedation Protocol</a>
 -->
 
-    <form action="{{ url_for('canine_sedation_opts', weight=weight) }}" method="get">
+<div class="button-container">
+  <!-- Button for Canine Sedation Protocol -->
+  <form action="{{ url_for('canine_sedation_opts', weight=weight) }}" method="get">
       <button type="submit" class="sedation-button">
-          <img src="images/dog-button.png" alt="Canine Sedation Protocol">
+          <img src="/images/dog-button.png" alt="Canine Sedation Protocol">
       </button>
-    </form>
+    
+  </form>
 
-    <br><br>
-
-    <!-- Button for Feline Sedation Protocol -->
-    <form action="{{ url_for('feline_sedation_opts', weight=weight) }}" method="get">
+  <!-- Button for Feline Sedation Protocol -->
+  <form action="{{ url_for('feline_sedation_opts', weight=weight) }}" method="get">
       <button type="submit" class="sedation-button">
-          <img src="images/cat-button.png" alt="Feline Sedation Protocol">
+          <img src="/images/cat-button.png" alt="Feline Sedation Protocol">
       </button>
-    </form>
+    
+  </form>
+</div>
 
 </body>
 </html>

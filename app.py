@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 
-app = Flask(__name__)
+#app = Flask(__name__)
+app = Flask(__name__, static_folder='images')
 app.secret_key = 'jsrcc-VCU-MAH-VEK-1999'
 
 # Global variable for weight_input
